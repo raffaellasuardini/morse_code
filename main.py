@@ -7,22 +7,46 @@ morse_code_dict = {
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
     '6': '-....', '7': '--...', '8': '---..', '9': '----.',
 }
-symbols_accepted = [",", "?", ".", ";", "!"]
+symbols_accepted = [",", "?", ".", ";", "!", ' ']
 
-def main():
+
+def convert():
+    print('Give me your secrets, i will transform it for you')
     sentence = input('Insert your sentence (only letters and numbers): ')
     result = ''
     for word in sentence:
         word_dec = morse_code_dict.get(word.upper())
         if word_dec:
-            result = result + word_dec
+            result += word_dec
+        elif word in symbols_accepted:
+            result += word
         else:
-            print('this symbol is not permitted '+ word)
-            main()
+            print('this symbol is not permitted ' + word)
+            convert()
             break
-    print('in morse code you sentence is: '+result)
+    print('in morse code you sentence is: ' + result)
 
 
+def decript():
+    pass
+
+
+def main():
+    print('W E L C O M E')
+    print('Insert x to exit')
+    again = True
+    while again:
+        choice = input('Want to convert or decript in morse code? (insert c/d) ')
+        if choice.lower() == 'c':
+            convert()
+        elif choice.lower() == 'd':
+            decript()
+        elif choice.lower() == 'x':
+            print('See you later alligator')
+            again = False
+        else:
+            print('Sorry i do not understand right, repeat')
+            continue
 
 
 if __name__ == '__main__':
