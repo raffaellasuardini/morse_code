@@ -14,16 +14,17 @@ def convert():
     print('Give me your secrets, i will transform it for you')
     sentence = input('Insert your sentence (only letters and numbers): ')
     result = ''
-    for word in sentence:
-        word_dec = morse_code_dict.get(word.upper())
-        if word_dec:
-            result += word_dec
-        elif word in symbols_accepted:
-            result += word
+    for char in sentence:
+        if char == ' ':
+            result += ' '
         else:
-            print('this symbol is not permitted ' + word)
-            convert()
-            break
+            word_dec = morse_code_dict.get(char.upper())
+            if word_dec:
+                result += word_dec + ' '
+            else:
+                print('this symbol is not permitted ' + char)
+                convert()
+                break
     print('in morse code you sentence is: ' + result)
 
 
