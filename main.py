@@ -7,7 +7,8 @@ morse_code_dict = {
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
     '6': '-....', '7': '--...', '8': '---..', '9': '----.',
 }
-symbols_accepted = [",", "?", ".", ";", "!", ' ']
+
+reverse_morse_dict = {v: k for k, v in morse_code_dict.items()}
 
 
 def convert():
@@ -28,8 +29,21 @@ def convert():
     print('in morse code you sentence is: ' + result)
 
 
-def decript():
-    pass
+def decrypt():
+    code_morse = input('Insert your code morse: ').strip()
+    result = ''
+    arr = code_morse.split(' ')
+    for el in arr:
+        if el == '':
+            result += ' '
+        else:
+            letter = reverse_morse_dict.get(el)
+            if letter:
+                result += letter.lower()
+            else:
+                print('This code contains error, this is not valid code: ' + el)
+                break
+    print('This is your sentence converted: ' + result)
 
 
 def main():
@@ -37,11 +51,11 @@ def main():
     print('Insert x to exit')
     again = True
     while again:
-        choice = input('Want to convert or decript in morse code? (insert c/d) ')
+        choice = input('Want to convert or decrypt in morse code? (insert c/d) ')
         if choice.lower() == 'c':
             convert()
         elif choice.lower() == 'd':
-            decript()
+            decrypt()
         elif choice.lower() == 'x':
             print('See you later alligator')
             again = False
