@@ -16,7 +16,7 @@ reverse_morse_dict = {v: k for k, v in morse_code_dict.items()}
 
 
 def convert():
-    print('Give me your secrets, i will transform it for you')
+    print('Give me your sentence, i will transform it for you')
     sentence = input('Insert your sentence: ')
     result = ''
     for char in sentence:
@@ -27,9 +27,7 @@ def convert():
             if word_dec:
                 result += word_dec + ' '
             else:
-                print('this symbol is not permitted ' + char)
-                convert()
-                break
+                result += '#'
     print('in morse code you sentence is: ' + result)
 
 
@@ -45,14 +43,14 @@ def decrypt():
             if letter:
                 result += letter.lower()
             else:
-                print('This code contains error, this is not valid code: ' + el)
-                break
+                result += '#'
     print('This is your sentence converted: ' + result)
 
 
 def main():
     print('W E L C O M E')
     print('Insert x to exit')
+
     again = True
     while again:
         choice = input('Want to convert or decrypt in morse code? (insert c/d) ')
