@@ -6,6 +6,10 @@ morse_code_dict = {
     'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
     '6': '-....', '7': '--...', '8': '---..', '9': '----.',
+    '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.', '!': '-.-.--',
+    '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...', ':': '---...',
+    ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-',
+    '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': ' ',
 }
 
 reverse_morse_dict = {v: k for k, v in morse_code_dict.items()}
@@ -13,11 +17,11 @@ reverse_morse_dict = {v: k for k, v in morse_code_dict.items()}
 
 def convert():
     print('Give me your secrets, i will transform it for you')
-    sentence = input('Insert your sentence (only letters and numbers): ')
+    sentence = input('Insert your sentence: ')
     result = ''
     for char in sentence:
         if char == ' ':
-            result += ' '
+            result += '/ '
         else:
             word_dec = morse_code_dict.get(char.upper())
             if word_dec:
@@ -34,7 +38,7 @@ def decrypt():
     result = ''
     arr = code_morse.split(' ')
     for el in arr:
-        if el == '':
+        if el == '/':
             result += ' '
         else:
             letter = reverse_morse_dict.get(el)
